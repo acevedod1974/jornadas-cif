@@ -108,8 +108,9 @@
           más humano, sostenible y resiliente: La Industria 5.0.
         </p>
         <p class="mt-4 text-md text-slate-500">
-          Informe unificado basado en el trabajo del Prof. Daniel Acevedo, CIF
-          (UNEXPO).
+          Informe unificado basado en el trabajo presentado por el Prof. Daniel
+          Acevedo en la Jornada de Investigación y <br />Enseñanza en Ingeniería
+          de Fabricación 2025 (CIF, UNEXPO).
         </p>
       </header>
 
@@ -380,9 +381,9 @@
         <p class="max-w-3xl mx-auto text-slate-600 mb-8">
           La inteligencia artificial no es simplemente la próxima herramienta en
           el arsenal de la fabricación. Es la fuerza que está esculpiendo un
-          nuevo paradigma industrial. La forma que adopte este futuro —si será
+          nuevo paradigma industrial. La forma que adopte este futuro, si será
           uno de automatización fría y eficiente o uno de colaboración
-          inteligente y humanística— dependerá de las decisiones que tomemos hoy
+          inteligente y humanística, dependerá de las decisiones que tomemos hoy
           como ingenieros, académicos, líderes y sociedad.
         </p>
         <div
@@ -644,6 +645,7 @@
         }
 
         function initCharts() {
+          // Impacto: animación tipo "bounce" y más lenta
           impactChartInstance = new Chart(
             document.getElementById("impactChart"),
             {
@@ -668,6 +670,10 @@
                 responsive: true,
                 maintainAspectRatio: false,
                 indexAxis: "y",
+                animation: {
+                  duration: 3500,
+                  easing: "bounce",
+                },
                 plugins: {
                   ...tooltipTitleCallback.plugins,
                   legend: { display: false },
@@ -684,6 +690,7 @@
             }
           );
 
+          // Salud: animación tipo "easeInOutElastic"
           maintenanceHealthChartInstance = new Chart(
             document.getElementById("maintenanceHealthChart"),
             {
@@ -721,6 +728,10 @@
                 ...tooltipTitleCallback,
                 responsive: true,
                 maintainAspectRatio: false,
+                animation: {
+                  duration: 4000,
+                  easing: "easeInOutElastic",
+                },
                 scales: {
                   y: {
                     beginAtZero: true,
@@ -736,6 +747,7 @@
             }
           );
 
+          // Donut Paradas: animación tipo "easeInOutBack"
           downtimeDonutChartInstance = new Chart(
             document.getElementById("downtimeDonutChart"),
             {
@@ -754,6 +766,10 @@
                 responsive: true,
                 maintainAspectRatio: false,
                 cutout: "70%",
+                animation: {
+                  duration: 3200,
+                  easing: "easeInOutBack",
+                },
                 plugins: {
                   ...tooltipTitleCallback.plugins,
                   legend: { display: false },
@@ -767,6 +783,7 @@
             }
           );
 
+          // Donut Costos: animación tipo "easeInOutCirc"
           costsDonutChartInstance = new Chart(
             document.getElementById("costsDonutChart"),
             {
@@ -785,6 +802,10 @@
                 responsive: true,
                 maintainAspectRatio: false,
                 cutout: "70%",
+                animation: {
+                  duration: 3200,
+                  easing: "easeInOutCirc",
+                },
                 plugins: {
                   ...tooltipTitleCallback.plugins,
                   legend: { display: false },
@@ -798,6 +819,7 @@
             }
           );
 
+          // XAI Spectrum: animación tipo "easeInOutQuart"
           xaiSpectrumChartInstance = new Chart(
             document.getElementById("xaiSpectrumChart"),
             {
@@ -827,6 +849,10 @@
                 ...tooltipTitleCallback,
                 responsive: true,
                 maintainAspectRatio: false,
+                animation: {
+                  duration: 3500,
+                  easing: "easeInOutQuart",
+                },
                 scales: {
                   y: {
                     beginAtZero: true,
@@ -849,6 +875,7 @@
             }
           );
 
+          // Radar Desafíos: animación tipo "easeInOutExpo"
           challengesChartInstance = new Chart(
             document.getElementById("challengesChart"),
             {
@@ -871,6 +898,10 @@
                 ...tooltipTitleCallback,
                 responsive: true,
                 maintainAspectRatio: false,
+                animation: {
+                  duration: 4000,
+                  easing: "easeInOutExpo",
+                },
                 scales: {
                   r: {
                     beginAtZero: true,
