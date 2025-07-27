@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Informe Interactivo: IA en la Fabricación y el Salto a la Industria 5.0
+    </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Chosen Palette: Fusion of Steel Blue (#4682B4) and Brilliant Blues (#0284c7) -->
+    <!-- Application Structure Plan: A comprehensive, thematic SPA merging the best of all provided files.
+        1.  Hero Section: Strong opening from `website.html`.
+        2.  Sticky Navigation: User-friendly navigation from `website2.html`.
+        3.  KPI Section: High-impact metric cards from `website.html` for a quick overview.
+        4.  Paradigm Shift: Interactive toggle from `website2.html` for direct comparison.
+        5.  Applications Dashboard: The filterable chart/description combo from `website2.html`.
+        6.  PdM Deep Dive: A new, dedicated section combining charts from `infografia.html` to detail Predictive Maintenance.
+        7.  XAI Section: A unified view combining the "Interpretability Spectrum" chart from `infografia.html` and the clear process flow diagram from `website.html`.
+        8.  Challenges Section: The interactive accordion and radar chart from `website2.html`.
+        9.  Conclusion & References: A final summary and a collapsible section for the bibliography from the academic paper.
+        This structure creates the most complete and user-friendly narrative journey. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f8fafc;
+      }
+      .chart-container {
+        position: relative;
+        width: 100%;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        height: 350px;
+        max-height: 450px;
+      }
+      @media (max-width: 768px) {
+        .chart-container {
+          height: 300px;
+          max-height: 400px;
+        }
+      }
+      .accent-bg {
+        background-color: #0284c7;
+      }
+      .accent-text {
+        color: #0284c7;
+      }
+      .accent-border {
+        border-color: #0284c7;
+      }
+      .gradient-text {
+        background: linear-gradient(to right, #0284c7, #38bdf8);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .nav-link {
+        padding: 8px 16px;
+        border-radius: 9999px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        font-weight: 600;
+      }
+      .nav-link.active,
+      .nav-link:hover {
+        background-color: #0284c7;
+        color: white;
+      }
+      .section-card {
+        background-color: white;
+        border-radius: 0.75rem;
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1),
+          0 2px 4px -2px rgb(0 0 0 / 0.1);
+        padding: 2rem;
+        margin-bottom: 3rem;
+      }
+      .kpi-card {
+        background-color: #ffffff;
+        border-left: 5px solid #0ea5e9;
+        transition: all 0.3s ease;
+      }
+      .kpi-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+          0 4px 6px -4px rgb(0 0 0 / 0.1);
+      }
+    </style>
+  </head>
+  <body class="text-slate-700">
+    <div class="container mx-auto px-4 py-8">
+      <header class="text-center my-12">
+        <h1 class="text-4xl md:text-6xl font-black text-slate-800 mb-4">
+          La Revolución <span class="gradient-text">Inteligente y Humana</span>
+        </h1>
+        <p class="text-lg md:text-xl max-w-4xl mx-auto text-slate-600">
+          Un análisis interactivo sobre cómo la Inteligencia Artificial está
+          redefiniendo la industria, impulsando la transición hacia un paradigma
+          más humano, sostenible y resiliente: La Industria 5.0.
+        </p>
+        <p class="mt-4 text-md text-slate-500">
+          Informe unificado basado en el trabajo del Prof. Daniel Acevedo, CIF
+          (UNEXPO).
+        </p>
+      </header>
+
+      <nav
+        class="sticky top-4 z-50 bg-white/90 backdrop-blur-md p-2 rounded-full shadow-lg max-w-2xl mx-auto mb-16 flex justify-center items-center gap-2 overflow-x-auto"
+      >
+        <a href="#kpis" class="nav-link">Impacto</a>
+        <a href="#paradigm" class="nav-link">Paradigmas</a>
+        <a href="#applications" class="nav-link">Aplicaciones</a>
+        <a href="#pdm" class="nav-link">PdM</a>
+        <a href="#xai" class="nav-link">XAI</a>
+        <a href="#challenges" class="nav-link">Desafíos</a>
+      </nav>
+
+      <section id="kpis" class="mb-20">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-slate-800">
+            El Impacto Cuantificable de la IA
+          </h2>
+          <p class="max-w-2xl mx-auto mt-2 text-slate-600">
+            Más allá de la teoría, la integración de la IA está generando
+            retornos de inversión significativos y medibles en el sector
+            manufacturero.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="kpi-card p-6 rounded-lg shadow-sm text-center">
+            <p class="text-5xl lg:text-6xl font-extrabold accent-text">40%</p>
+            <p class="mt-2 text-slate-700 font-semibold text-lg">
+              Aumento de Productividad
+            </p>
+            <p class="text-sm text-slate-500 mt-1">
+              Potencial de incremento en la eficiencia gracias a la optimización
+              de procesos por IA.
+            </p>
+          </div>
+          <div class="kpi-card p-6 rounded-lg shadow-sm text-center">
+            <p class="text-5xl lg:text-6xl font-extrabold accent-text">50%</p>
+            <p class="mt-2 text-slate-700 font-semibold text-lg">
+              Reducción de Costos de Mantenimiento
+            </p>
+            <p class="text-sm text-slate-500 mt-1">
+              A través de estrategias de Mantenimiento Predictivo (PdM) basadas
+              en datos.
+            </p>
+          </div>
+          <div class="kpi-card p-6 rounded-lg shadow-sm text-center">
+            <p class="text-5xl lg:text-6xl font-extrabold accent-text">40%</p>
+            <p class="mt-2 text-slate-700 font-semibold text-lg">
+              Aumento en la Vida Útil de Equipos
+            </p>
+            <p class="text-sm text-slate-500 mt-1">
+              El PdM permite optimizar el uso de los activos críticos,
+              extendiendo su durabilidad.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="paradigm" class="section-card">
+        <div class="text-center mb-10">
+          <h2 class="text-3xl font-bold">
+            Del Autómata al Colaborador: Un Cambio de Paradigma
+          </h2>
+          <p class="mt-2 max-w-3xl mx-auto">
+            La Industria 5.0 no reemplaza a la 4.0, la complementa,
+            reintroduciendo el factor humano como pieza central. Utilice los
+            botones para comparar los enfoques.
+          </p>
+        </div>
+        <div class="flex justify-center mb-8 gap-4">
+          <button
+            id="btn-i4"
+            class="px-6 py-2 font-bold rounded-full transition-all duration-300"
+          >
+            Industria 4.0
+          </button>
+          <button
+            id="btn-i5"
+            class="px-6 py-2 font-bold rounded-full transition-all duration-300"
+          >
+            Industria 5.0
+          </button>
+        </div>
+        <div
+          id="paradigm-content"
+          class="grid grid-cols-1 md:grid-cols-2 gap-8 transition-opacity duration-500"
+        ></div>
+      </section>
+
+      <section id="applications" class="section-card">
+        <div class="text-center mb-10">
+          <h2 class="text-3xl font-bold">
+            El Ecosistema de la IA en la Fabricación
+          </h2>
+          <p class="mt-2 max-w-3xl mx-auto">
+            La IA transforma diversas áreas de la producción. Seleccione una
+            aplicación para explorar su rol, su impacto y cómo contribuye al
+            nuevo paradigma industrial.
+          </p>
+        </div>
+        <div
+          class="flex flex-wrap justify-center gap-3 mb-8"
+          id="app-filters"
+        ></div>
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+          <div id="app-description" class="lg:col-span-2"></div>
+          <div class="lg:col-span-3">
+            <div class="chart-container mx-auto">
+              <canvas id="impactChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="pdm" class="section-card">
+        <div class="text-center mb-10">
+          <h2 class="text-3xl font-bold">
+            Análisis Profundo: Mantenimiento Predictivo (PdM)
+          </h2>
+          <p class="text-md text-slate-600 max-w-3xl mx-auto">
+            El PdM, potenciado por IA, es una de las aplicaciones de mayor
+            impacto. En lugar de reaccionar a las fallas, la IA permite
+            anticiparlas, analizando datos de sensores en tiempo real para
+            predecir cuándo un componente necesitará mantenimiento.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <div class="bg-slate-50 p-6 rounded-lg">
+            <h3 class="text-xl font-bold text-center mb-4">
+              Evolución de la Salud de un Activo
+            </h3>
+            <div class="chart-container h-80 max-h-[350px]">
+              <canvas id="maintenanceHealthChart"></canvas>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <div
+              class="bg-slate-50 p-6 rounded-lg flex flex-col justify-center items-center"
+            >
+              <h3 class="text-xl font-bold text-center mb-4">
+                Reducción de Paradas
+              </h3>
+              <div
+                class="chart-container w-48 h-48 max-w-[200px] max-h-[200px]"
+              >
+                <canvas id="downtimeDonutChart"></canvas>
+              </div>
+            </div>
+            <div
+              class="bg-slate-50 p-6 rounded-lg flex flex-col justify-center items-center"
+            >
+              <h3 class="text-xl font-bold text-center mb-4">
+                Ahorro en Costos
+              </h3>
+              <div
+                class="chart-container w-48 h-48 max-w-[200px] max-h-[200px]"
+              >
+                <canvas id="costsDonutChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="xai" class="section-card">
+        <div class="text-center mb-10">
+          <h2 class="text-3xl font-bold">
+            De la Caja Negra a la Confianza: IA Explicable (XAI)
+          </h2>
+          <p class="mt-2 max-w-3xl mx-auto">
+            Para que los humanos confíen en las decisiones de la IA, los modelos
+            no pueden ser "cajas negras". La XAI crea sistemas que justifican
+            sus conclusiones de forma comprensible.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <div class="bg-slate-50 p-6 rounded-lg">
+            <h3 class="font-bold text-xl mb-4 text-center text-slate-800">
+              El Espectro de Interpretabilidad
+            </h3>
+            <p class="text-center text-sm text-slate-500 mb-4">
+              No todos los algoritmos son igual de transparentes. La XAI es más
+              crítica para los modelos de "caja negra".
+            </p>
+            <div class="chart-container" style="height: 420px">
+              <canvas id="xaiSpectrumChart"></canvas>
+            </div>
+          </div>
+          <div class="bg-slate-50 p-6 rounded-lg">
+            <h3 class="font-bold text-xl mb-6 text-center text-slate-800">
+              Flujo de Diagnóstico con XAI
+            </h3>
+            <p class="text-slate-600 mb-6 text-center text-sm">
+              El enfoque `XGBoost + SHAP` transforma una predicción en un
+              diagnóstico accionable y confiable.
+            </p>
+            <div class="space-y-4">
+              <div class="border p-4 rounded-lg flex items-center bg-white">
+                <span class="text-2xl mr-4 accent-text">&#128202;</span>
+                <div>
+                  <h4 class="font-bold text-slate-800">
+                    1. Predicción (XGBoost)
+                  </h4>
+                  <p class="text-sm text-slate-600">
+                    Un algoritmo de alta precisión predice una falla inminente.
+                  </p>
+                </div>
+              </div>
+              <div class="text-center text-3xl text-slate-400">&darr;</div>
+              <div class="border p-4 rounded-lg flex items-center bg-white">
+                <span class="text-2xl mr-4 text-orange-500">&#128270;</span>
+                <div>
+                  <h4 class="font-bold text-slate-800">
+                    2. Explicación (SHAP)
+                  </h4>
+                  <p class="text-sm text-slate-600">
+                    Una técnica de XAI revela qué factores (sensores) influyeron
+                    más.
+                  </p>
+                </div>
+              </div>
+              <div class="text-center text-3xl text-slate-400">&darr;</div>
+              <div
+                class="border p-4 rounded-lg flex items-center bg-green-50 border-green-300"
+              >
+                <span class="text-2xl mr-4 text-green-600">&#128161;</span>
+                <div>
+                  <h4 class="font-bold text-green-700">
+                    3. Diagnóstico Accionable
+                  </h4>
+                  <p class="text-sm text-green-600">
+                    La explicación indica que la causa es "vibración anómala".
+                    El equipo sabe dónde intervenir.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="challenges" class="section-card">
+        <div class="text-center mb-10">
+          <h2 class="text-3xl font-bold">
+            Navegando los Desafíos de la Transición
+          </h2>
+          <p class="mt-2 max-w-3xl mx-auto">
+            La adopción de la Industria 5.0 es un viaje complejo. El gráfico y
+            el acordeón detallan los principales obstáculos que las
+            organizaciones deben superar.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <div>
+            <div class="chart-container h-[400px]">
+              <canvas id="challengesChart"></canvas>
+            </div>
+          </div>
+          <div id="accordion-container" class="space-y-3"></div>
+        </div>
+      </section>
+
+      <footer class="text-center mt-20 pt-8 border-t border-slate-200">
+        <h2 class="text-2xl font-bold text-center mb-6">
+          Conclusión y Referencias
+        </h2>
+        <p class="max-w-3xl mx-auto text-slate-600 mb-8">
+          La inteligencia artificial no es simplemente la próxima herramienta en
+          el arsenal de la fabricación. Es la fuerza que está esculpiendo un
+          nuevo paradigma industrial. La forma que adopte este futuro —si será
+          uno de automatización fría y eficiente o uno de colaboración
+          inteligente y humanística— dependerá de las decisiones que tomemos hoy
+          como ingenieros, académicos, líderes y sociedad.
+        </p>
+        <div
+          class="max-w-4xl mx-auto text-sm text-left text-slate-600 bg-slate-100 p-6 rounded-lg"
+        >
+          <button
+            id="ref-toggle"
+            class="font-bold text-lg accent-text w-full text-left mb-2"
+          >
+            Mostrar Referencias Bibliográficas ▼
+          </button>
+          <ol id="ref-list" class="list-decimal list-inside space-y-2 hidden">
+            <!-- References will be injected here by JS -->
+          </ol>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const data = {
+          paradigm: {
+            i4: {
+              title: "Industria 4.0: La Fábrica Eficiente",
+              points: [
+                {
+                  icon: "⚙️",
+                  text: "Enfoque principal en la automatización y eficiencia de procesos.",
+                },
+                {
+                  icon: "🤖",
+                  text: "Las máquinas operan de forma autónoma, con intervención humana limitada.",
+                },
+                {
+                  icon: "📈",
+                  text: "El objetivo es maximizar la producción y minimizar los costes operativos.",
+                },
+              ],
+            },
+            i5: {
+              title: "Industria 5.0: La Fábrica Colaborativa",
+              points: [
+                {
+                  icon: "🤝",
+                  text: "Enfoque en la colaboración humano-máquina para potenciar capacidades.",
+                },
+                {
+                  icon: "🌿",
+                  text: "Integra la sostenibilidad y la economía circular como pilares.",
+                },
+                {
+                  icon: "❤️",
+                  text: "Prioriza el bienestar, la seguridad y el desarrollo del trabajador.",
+                },
+              ],
+            },
+          },
+          applications: [
+            {
+              id: "maintenance",
+              name: "Mantenimiento Predictivo",
+              description:
+                "Utiliza datos de sensores para predecir fallos en la maquinaria antes de que ocurran, transformando el mantenimiento de reactivo a proactivo y reduciendo drásticamente las paradas no planificadas.",
+              impact: 90,
+            },
+            {
+              id: "quality",
+              name: "Control de Calidad",
+              description:
+                "Aplica visión por computador para detectar defectos con una precisión y velocidad sobrehumanas, asegurando una calidad constante.",
+              impact: 85,
+            },
+            {
+              id: "optimization",
+              name: "Optimización de Procesos",
+              description:
+                "Analiza miles de variables de producción en tiempo real (velocidad, temperatura, presión) para encontrar los parámetros óptimos, mejorando la eficiencia energética y la calidad.",
+              impact: 75,
+            },
+            {
+              id: "supplychain",
+              name: "Cadena de Suministro",
+              description:
+                "Modela y predice la demanda, optimiza el inventario y mejora la logística para crear cadenas de suministro resilientes.",
+              impact: 70,
+            },
+            {
+              id: "design",
+              name: "Diseño Generativo",
+              description:
+                "La IA explora miles de posibles diseños de productos basados en requisitos, proponiendo soluciones innovadoras y altamente optimizadas.",
+              impact: 60,
+            },
+          ],
+          challenges: [
+            {
+              name: "Brecha de Habilidades",
+              description:
+                "La falta de personal con formación en IA y ciencia de datos es el principal cuello de botella. Se requiere una inversión masiva en educación y reconversión profesional.",
+              score: 9,
+            },
+            {
+              name: "Cultura Organizacional",
+              description:
+                "La resistencia al cambio y la falta de una visión clara desde la dirección pueden frenar la adopción. Se necesita un cambio cultural que abrace la experimentación.",
+              score: 8,
+            },
+            {
+              name: "Integración Técnica",
+              description:
+                "Conectar sistemas heredados (legacy) con nuevas plataformas de IA es complejo y costoso. La interoperabilidad y los estándares de datos son cruciales.",
+              score: 8,
+            },
+            {
+              name: "Ética y Privacidad",
+              description:
+                "El uso de datos de trabajadores y la posibilidad de sesgos en los algoritmos plantean serios dilemas éticos que deben ser abordados con marcos de gobernanza claros.",
+              score: 7,
+            },
+            {
+              name: "Inversión Inicial (ROI)",
+              description:
+                "El alto coste inicial y la dificultad para calcular un Retorno de la Inversión (ROI) que incluya beneficios intangibles como el bienestar, pueden ser una barrera.",
+              score: 6,
+            },
+          ],
+          references: [
+            "Bainbridge, L. (1983). Ironies of automation. *Automatica, 19*(6), 775–779.",
+            "Deloitte, & The Manufacturing Institute. (2021). *Creating pathways for tomorrow’s workforce today*.",
+            "Deloitte Analytics Institute. (2017). *Predictive Maintenance: Position Paper*.",
+            "European Commission. (2021). *Industry 5.0: Towards a sustainable, human-centric and resilient European industry*.",
+            "Gunning, D. (2017). *Explainable Artificial Intelligence (XAI)*. DARPA.",
+            "Hancock, P. A., et al. (2011). A meta-analysis of factors affecting trust in human-robot interaction. *Human Factors, 53*(5), 517–527.",
+            "Lundberg, S. M., & Lee, S.-I. (2017). A unified approach to interpreting model predictions. In *Advances in Neural Information Processing Systems, 30*.",
+            "Mayer, R. C., Davis, J. H., & Schoorman, F. D. (1995). An integrative model of organizational trust. *Academy of Management Review, 20*(3), 709–734.",
+            "World Economic Forum. (2025). *The Future of Jobs Report 2025*.",
+          ],
+        };
+
+        // State variables
+        let activeParadigm = "i5";
+        let activeApplication = "maintenance";
+
+        // Chart instances
+        let impactChartInstance,
+          maintenanceHealthChartInstance,
+          downtimeDonutChartInstance,
+          costsDonutChartInstance,
+          xaiSpectrumChartInstance,
+          challengesChartInstance;
+
+        // Element selectors
+        const paradigmContent = document.getElementById("paradigm-content");
+        const btnI4 = document.getElementById("btn-i4");
+        const btnI5 = document.getElementById("btn-i5");
+        const appFiltersContainer = document.getElementById("app-filters");
+        const appDescriptionContainer =
+          document.getElementById("app-description");
+        const accordionContainer = document.getElementById(
+          "accordion-container"
+        );
+        const refToggle = document.getElementById("ref-toggle");
+        const refList = document.getElementById("ref-list");
+
+        const brilliantBlues = ["#0284c7", "#0ea5e9", "#38bdf8", "#7dd3fc"];
+        const brilliantGreens = ["#16a34a", "#22c55e", "#4ade80", "#86efac"];
+        const brilliantOranges = ["#f97316", "#fb923c", "#fdba74", "#fed7aa"];
+
+        function wrapLabels(label, maxLen = 15) {
+          if (typeof label !== "string" || label.length <= maxLen) return label;
+          const words = label.split(" ");
+          let lines = [];
+          let currentLine = "";
+          for (const word of words) {
+            if (
+              (currentLine + " " + word).trim().length > maxLen &&
+              currentLine.length > 0
+            ) {
+              lines.push(currentLine);
+              currentLine = word;
+            } else {
+              currentLine += (currentLine.length === 0 ? "" : " ") + word;
+            }
+          }
+          if (currentLine.length > 0) lines.push(currentLine);
+          return lines;
+        }
+
+        const tooltipTitleCallback = {
+          plugins: {
+            tooltip: {
+              callbacks: {
+                title: (items) =>
+                  Array.isArray(items[0].chart.data.labels[items[0].dataIndex])
+                    ? items[0].chart.data.labels[items[0].dataIndex].join(" ")
+                    : items[0].chart.data.labels[items[0].dataIndex],
+              },
+            },
+          },
+        };
+
+        function updateParadigmView() {
+          const renderSide = (item, id) =>
+            `<div class="border-l-4 p-6 ${
+              id === "i4" ? "border-slate-400" : "accent-border"
+            } ${
+              activeParadigm === id
+                ? "bg-white shadow-xl scale-105"
+                : "bg-slate-50 opacity-80"
+            } transition-all duration-300 rounded-lg"><h3 class="text-2xl font-bold mb-4">${
+              item.title
+            }</h3><ul class="space-y-4">${item.points
+              .map(
+                (p) =>
+                  `<li class="flex items-start"><span class="text-2xl mr-3">${p.icon}</span><span>${p.text}</span></li>`
+              )
+              .join("")}</ul></div>`;
+          paradigmContent.innerHTML =
+            renderSide(data.paradigm.i4, "i4") +
+            renderSide(data.paradigm.i5, "i5");
+          btnI4.classList.toggle("accent-bg", activeParadigm === "i4");
+          btnI4.classList.toggle("text-white", activeParadigm === "i4");
+          btnI5.classList.toggle("accent-bg", activeParadigm === "i5");
+          btnI5.classList.toggle("text-white", activeParadigm === "i5");
+        }
+
+        function renderAppFilters() {
+          appFiltersContainer.innerHTML = data.applications
+            .map(
+              (app) =>
+                `<button data-id="${app.id}" class="app-filter px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 border-2">${app.name}</button>`
+            )
+            .join("");
+          document.querySelectorAll(".app-filter").forEach((btn) =>
+            btn.addEventListener("click", () => {
+              activeApplication = btn.dataset.id;
+              updateApplicationView();
+            })
+          );
+        }
+
+        function updateApplicationView() {
+          const app = data.applications.find((a) => a.id === activeApplication);
+          appDescriptionContainer.innerHTML = `<h3 class="text-2xl font-bold mb-2">${app.name}</h3><p class="text-slate-600">${app.description}</p>`;
+          document.querySelectorAll(".app-filter").forEach((btn) => {
+            const isActive = btn.dataset.id === activeApplication;
+            btn.classList.toggle("accent-bg", isActive);
+            btn.classList.toggle("text-white", isActive);
+            btn.classList.toggle("border-transparent", isActive);
+            btn.classList.toggle("accent-border", !isActive);
+          });
+          if (impactChartInstance) {
+            impactChartInstance.data.datasets[0].backgroundColor =
+              data.applications.map((a) =>
+                a.id === activeApplication ? "#0284c7" : "#e2e8f0"
+              );
+            impactChartInstance.update();
+          }
+        }
+
+        function initCharts() {
+          impactChartInstance = new Chart(
+            document.getElementById("impactChart"),
+            {
+              type: "bar",
+              data: {
+                labels: data.applications.map((app) => wrapLabels(app.name)),
+                datasets: [
+                  {
+                    label: "Nivel de Impacto / Madurez",
+                    data: data.applications.map((app) => app.impact),
+                    backgroundColor: data.applications.map((a) =>
+                      a.id === activeApplication ? "#0284c7" : "#e2e8f0"
+                    ),
+                    borderColor: "#FFFFFF",
+                    borderWidth: 2,
+                    borderRadius: 5,
+                  },
+                ],
+              },
+              options: {
+                ...tooltipTitleCallback,
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: "y",
+                plugins: {
+                  ...tooltipTitleCallback.plugins,
+                  legend: { display: false },
+                },
+                scales: {
+                  x: {
+                    beginAtZero: true,
+                    max: 100,
+                    title: { display: true, text: "Impacto / Madurez (%)" },
+                  },
+                  y: { ticks: { font: { size: 10 } } },
+                },
+              },
+            }
+          );
+
+          maintenanceHealthChartInstance = new Chart(
+            document.getElementById("maintenanceHealthChart"),
+            {
+              type: "line",
+              data: {
+                labels: [
+                  "Enero",
+                  "Febrero",
+                  "Marzo",
+                  "Abril",
+                  "Mayo",
+                  "Junio",
+                  "Julio",
+                ],
+                datasets: [
+                  {
+                    label: "Índice de Salud",
+                    data: [98, 95, 96, 85, 80, 70, 45],
+                    fill: true,
+                    borderColor: brilliantBlues[0],
+                    backgroundColor: brilliantBlues[0] + "33",
+                    tension: 0.3,
+                  },
+                  {
+                    label: "Umbral de Falla",
+                    data: [50, 50, 50, 50, 50, 50, 50],
+                    fill: false,
+                    borderColor: brilliantOranges[0],
+                    borderDash: [5, 5],
+                    pointRadius: 0,
+                  },
+                ],
+              },
+              options: {
+                ...tooltipTitleCallback,
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                  y: {
+                    beginAtZero: true,
+                    max: 100,
+                    title: { display: true, text: "Índice de Salud (%)" },
+                  },
+                },
+                plugins: {
+                  ...tooltipTitleCallback.plugins,
+                  legend: { position: "bottom" },
+                },
+              },
+            }
+          );
+
+          downtimeDonutChartInstance = new Chart(
+            document.getElementById("downtimeDonutChart"),
+            {
+              type: "doughnut",
+              data: {
+                labels: ["Tiempo Operativo", "Paradas"],
+                datasets: [
+                  {
+                    data: [95, 5],
+                    backgroundColor: [brilliantGreens[1], "#e2e8f0"],
+                  },
+                ],
+              },
+              options: {
+                ...tooltipTitleCallback,
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: "70%",
+                plugins: {
+                  ...tooltipTitleCallback.plugins,
+                  legend: { display: false },
+                  title: {
+                    display: true,
+                    position: "bottom",
+                    text: "Hasta 50% Menos",
+                  },
+                },
+              },
+            }
+          );
+
+          costsDonutChartInstance = new Chart(
+            document.getElementById("costsDonutChart"),
+            {
+              type: "doughnut",
+              data: {
+                labels: ["Costos Base", "Ahorro"],
+                datasets: [
+                  {
+                    data: [60, 40],
+                    backgroundColor: [brilliantOranges[1], "#e2e8f0"],
+                  },
+                ],
+              },
+              options: {
+                ...tooltipTitleCallback,
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: "70%",
+                plugins: {
+                  ...tooltipTitleCallback.plugins,
+                  legend: { display: false },
+                  title: {
+                    display: true,
+                    position: "bottom",
+                    text: "Hasta 40% Menos",
+                  },
+                },
+              },
+            }
+          );
+
+          xaiSpectrumChartInstance = new Chart(
+            document.getElementById("xaiSpectrumChart"),
+            {
+              type: "bar",
+              data: {
+                labels: wrapLabels([
+                  "LSTM (Red Neuronal)",
+                  "SVM",
+                  "XGBoost",
+                  "Random Forest",
+                ]),
+                datasets: [
+                  {
+                    label: "Interpretabilidad Intrínseca",
+                    data: [10, 30, 40, 80],
+                    backgroundColor: [
+                      brilliantOranges[2],
+                      brilliantOranges[1],
+                      brilliantBlues[1],
+                      brilliantGreens[1],
+                    ],
+                    borderWidth: 0,
+                  },
+                ],
+              },
+              options: {
+                ...tooltipTitleCallback,
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                  y: {
+                    beginAtZero: true,
+                    max: 100,
+                    ticks: {
+                      callback: (v) =>
+                        v === 0
+                          ? "Caja Negra"
+                          : v === 100
+                          ? "Transparente"
+                          : "",
+                    },
+                  },
+                },
+                plugins: {
+                  ...tooltipTitleCallback.plugins,
+                  legend: { display: false },
+                },
+              },
+            }
+          );
+
+          challengesChartInstance = new Chart(
+            document.getElementById("challengesChart"),
+            {
+              type: "radar",
+              data: {
+                labels: data.challenges.map((c) => wrapLabels(c.name)),
+                datasets: [
+                  {
+                    label: "Nivel de Desafío",
+                    data: data.challenges.map((c) => c.score),
+                    fill: true,
+                    backgroundColor: "rgba(2, 132, 199, 0.2)",
+                    borderColor: "#0284c7",
+                    pointBackgroundColor: "#0284c7",
+                    pointBorderColor: "#fff",
+                  },
+                ],
+              },
+              options: {
+                ...tooltipTitleCallback,
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                  r: {
+                    beginAtZero: true,
+                    max: 10,
+                    ticks: { stepSize: 2 },
+                    pointLabels: { font: { size: 11 } },
+                  },
+                },
+                plugins: {
+                  ...tooltipTitleCallback.plugins,
+                  legend: { display: false },
+                },
+              },
+            }
+          );
+        }
+
+        function initAccordions() {
+          accordionContainer.innerHTML = data.challenges
+            .map(
+              (challenge) =>
+                `<div class="border rounded-lg"><button class="accordion-header w-full text-left p-4 font-bold flex justify-between items-center"><span>${challenge.name}</span><span class="transform transition-transform duration-300">▶</span></button><div class="accordion-content overflow-hidden max-h-0 transition-all duration-500 ease-in-out px-4"><p class="pb-4">${challenge.description}</p></div></div>`
+            )
+            .join("");
+          document.querySelectorAll(".accordion-header").forEach((header) => {
+            header.addEventListener("click", () => {
+              const content = header.nextElementSibling;
+              const icon = header.querySelector("span:last-child");
+              const isOpening =
+                !content.style.maxHeight || content.style.maxHeight === "0px";
+              document
+                .querySelectorAll(".accordion-content")
+                .forEach((c) => (c.style.maxHeight = "0px"));
+              document
+                .querySelectorAll(".accordion-header span:last-child")
+                .forEach((i) => (i.style.transform = "rotate(0deg)"));
+              if (isOpening) {
+                content.style.maxHeight = content.scrollHeight + "px";
+                icon.style.transform = "rotate(90deg)";
+              }
+            });
+          });
+        }
+
+        function initReferences() {
+          refList.innerHTML = data.references
+            .map((ref) => `<li>${ref}</li>`)
+            .join("");
+          refToggle.addEventListener("click", () => {
+            const isHidden = refList.classList.contains("hidden");
+            refList.classList.toggle("hidden");
+            refToggle.innerHTML = isHidden
+              ? "Ocultar Referencias Bibliográficas ▲"
+              : "Mostrar Referencias Bibliográficas ▼";
+          });
+        }
+
+        function initNav() {
+          const sections = document.querySelectorAll("section");
+          const navLinks = document.querySelectorAll(".nav-link");
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  navLinks.forEach((link) =>
+                    link.classList.toggle(
+                      "active",
+                      link.getAttribute("href").substring(1) === entry.target.id
+                    )
+                  );
+                }
+              });
+            },
+            { rootMargin: "-40% 0px -60% 0px" }
+          );
+          sections.forEach((section) => observer.observe(section));
+        }
+
+        // Initial calls
+        btnI4.addEventListener("click", () => {
+          activeParadigm = "i4";
+          updateParadigmView();
+        });
+        btnI5.addEventListener("click", () => {
+          activeParadigm = "i5";
+          updateParadigmView();
+        });
+
+        updateParadigmView();
+        renderAppFilters();
+        initCharts();
+        updateApplicationView();
+        initAccordions();
+        initReferences();
+        initNav();
+      });
+    </script>
+  </body>
+</html>
